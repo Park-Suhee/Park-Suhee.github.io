@@ -6,7 +6,7 @@ subtitle: Ph.D. Student in Seismology
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: main_pic.jpg
   image_circular: True
   more_info: >
     <p>Southern Methodist University</p>
