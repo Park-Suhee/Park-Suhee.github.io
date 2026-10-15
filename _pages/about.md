@@ -26,9 +26,18 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a Ph.D. student in Seismology at Southern Methodist University.
-My research focuses on earthquake source characterization, active tectonics, and subsurface fault mapping.
+I am a Ph.D. student in Seismology in the Department of Earth Sciences at Southern Methodist University (SMU), Dallas, TX.
+My research focuses on earthquake detection, source characterization, induced seismicity and active tectonics using seismic waveforms.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+### Research Experience & Interests
+* **Offshore Earthquake Analysis (Current):**
+  Investigating earthquake sequences and subsurface fault structures near Yeongdeok, South Korea, to better understand local stress fields and seismic hazard.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+* **Induced Seismicity & Magnitude Scaling (M.S. Research):**
+  Analyzed induced earthquakes associated with hydraulic fracturing operations in Western Canada (Kiskatinaw Area, British Columbia) and developed an improved local magnitude ($M_L$) scale for accurate magnitude estimation.
+
+---
+
+Feel free to reach out via email or check my publications and CV for more details about my research.
+* email: suheep@smu.edu / suheetx@gmail.com
+
