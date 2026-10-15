@@ -1,9 +1,3 @@
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  body, p, h1, h2, h3, h4, h5, h6, a, span, div {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
-  }
-</style>
 ---
 layout: about
 title: about
