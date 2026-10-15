@@ -4,10 +4,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
 
-$code-bg-color: #fcf8f2;
-
-@import "al-folio";
-
 body {
   font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
   background-color: #fcf8f2 !important;
@@ -15,9 +11,8 @@ body {
 }
 
 .navbar, 
-.category-badge, 
-body.fixed-top-nav, 
 .header, 
+body.fixed-top-nav, 
 footer {
   background-color: #fcf8f2 !important;
 }
