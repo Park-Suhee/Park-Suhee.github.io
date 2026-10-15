@@ -45,5 +45,4 @@ My research focuses on earthquake detection, source characterization, induced se
 ---
 
 Feel free to reach out via email or check my publications and CV for more details about my research.
-* email: suheep@smu.edu / suheetx@gmail.com
 
