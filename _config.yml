@@ -6,8 +6,8 @@ title: "Suhee Park"
 first_name: Suhee
 middle_name: 
 last_name: Park
-contact_note: >
-  You can even add a little note about which of these is the best way to reach you.
+email: suheep@smu.edu
+contact_note: ""
 description: "Ph.D. Student in Seismology at Southern Methodist University."
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
