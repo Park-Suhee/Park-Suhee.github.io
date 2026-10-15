@@ -1,1 +1,1 @@
-@import"https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap";html,body,p,h1,h2,h3,h4,h5,h6,a,span,div{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif !important}
+@import"https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap";body{font-family:"Roboto",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif !important;background-color:#fcf8f2 !important;line-height:1.5 !important}.navbar,.header,body.fixed-top-nav,footer{background-color:#fcf8f2 !important}
