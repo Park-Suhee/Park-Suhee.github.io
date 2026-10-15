@@ -1,0 +1,12 @@
+---
+# Front matter required for Jekyll to compile SCSS
+---
+
+@import "al-folio";
+
+/* Custom Fonts Override */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+html, body, p, h1, h2, h3, h4, h5, h6, a, span, div {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
