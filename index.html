@@ -136,8 +136,7 @@ var SITE = {
 
   /* 연구 그림 — 연구 섹션 아래에 나란히 표시됩니다. 그림 파일은 images 폴더에 올리세요.
      비어 있으면 아무것도 보이지 않습니다 */
-  figures: [{ src: "Figure/Figure1.png", en: "Station layout and ray‐path coverage in the Kiskatinaw Seismic Monitoring and Mitigation Area (KSMMA). " },
-            { src: "Figure/Figure3.png", en: "Characteristics of the combined magnitude catalog and station corrections in the KSMMA." },
+  figures: [{ src: "Figure/Figure3.png", en: "Characteristics of the combined magnitude catalog and station corrections in the KSMMA." },
             { src: "Figure/Figure5.png", en: "Independent cross‐validation using the Goerzen et al. (2024) catalog (2021–2022). Comparison of the catalog with previous local magnitude scales (BMK19 and BMK20). " }
   ],
 
@@ -364,7 +363,9 @@ var SITE = {
       a.href=f.src;a.target='_blank';a.rel='noopener';
       im.src=f.src;im.loading='lazy';im.alt=f.en||f.ko||'';
       a.appendChild(im);fg.appendChild(a);
-      var c=el('figcaption');c.appendChild(el('span','ko',f.ko||''));c.appendChild(el('span','en',f.en||''));
+      var c=el('figcaption');
+      c.appendChild(el('span','ko',f.ko || f.en || ''));
+      c.appendChild(el('span','en',f.en || f.ko || ''));;
       fg.appendChild(c);target.appendChild(fg);
     });
   }
