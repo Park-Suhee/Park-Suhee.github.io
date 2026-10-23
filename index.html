@@ -5,16 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>박수희 · Suhee Park</title>
 <meta name="description" content="Ph.D. student in seismology at Southern Methodist University.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
 :root{
   --bg:#EDE8E3; --surface:#F7F4F0; --inset:#EFEBE6; --ink:#37322E; --muted:#6B635C;
   --line:#DCD5CD; --accent:#3F5A63; --tint:rgba(63,90,99,.10);
   --shadow:0 1px 2px rgba(60,50,45,.05),0 10px 30px rgba(60,50,45,.06);
-  --serif:"Noto Serif KR","Iowan Old Style",Georgia,serif;
-  --sans:"Noto Sans KR",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Apple SD Gothic Neo","Pretendard Variable",Pretendard,system-ui,sans-serif;
+  --sans:"Apple SD Gothic Neo","Pretendard Variable",Pretendard,system-ui,sans-serif;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -40,8 +38,11 @@ h1{font:700 clamp(38px,6.5vw,56px)/1.15 var(--serif);margin:0 0 8px;letter-spaci
 .hero p.intro{margin:14px 0 0;max-width:60ch}
 .tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:20px 0 0}
 .tags li{background:var(--tint);color:var(--accent);border-radius:999px;padding:3px 14px;font-size:14px;font-weight:500}
-.trace{display:block;width:100%;height:90px;margin:6px 0 0}
-.trace path{fill:none;stroke:var(--accent);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:2400;stroke-dashoffset:2400;animation:draw 2.6s ease-out .2s forwards}
+.trace-wrap{position:relative;margin-top:6px}
+.trace{display:block;width:100%;height:100px}
+.phase{position:absolute;top:0;transform:translateX(-50%);font:italic 500 13px/1 Georgia,serif;color:var(--accent);padding-bottom:6px}
+.phase::after{content:"";position:absolute;left:50%;top:16px;height:14px;border-left:1px dashed var(--accent);opacity:.6}
+.trace path{fill:none;stroke:var(--accent);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.6s ease-out .2s forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
 @media (prefers-reduced-motion:reduce){.trace path{animation:none;stroke-dashoffset:0}html{scroll-behavior:auto}}
 section{background:var(--surface);border-radius:22px;padding:34px 40px;margin:0 0 22px;box-shadow:var(--shadow)}
@@ -166,9 +167,13 @@ var SITE = {
   </div>
 </header>
 
-<svg class="trace" viewBox="0 0 1000 80" preserveAspectRatio="none" aria-hidden="true">
-  <path d="M0 40 L40 41 L70 39 L100 41 L140 40 L180 39 L220 41 L260 40 L300 38 L330 44 L350 20 L365 62 L380 8 L395 70 L410 16 L425 58 L440 26 L455 52 L470 30 L490 48 L510 34 L540 46 L570 36 L610 44 L650 38 L700 42 L760 39 L820 41 L900 40 L1000 40"/>
-</svg>
+<div class="trace-wrap">
+  <svg class="trace" viewBox="0 0 1000 80" preserveAspectRatio="none" aria-hidden="true">
+    <path pathLength="1" d="M0 39.8 L3 40.5 L6 39.8 L9 39.7 L12 39.2 L15 39.8 L18 41.0 L21 40.4 L24 40.9 L27 40.2 L30 40.4 L33 40.2 L36 38.5 L39 40.8 L42 40.5 L45 40.4 L48 38.5 L51 38.4 L54 39.2 L57 39.6 L60 40.3 L63 40.0 L66 40.5 L69 39.4 L72 40.3 L75 40.4 L78 39.4 L81 41.5 L84 40.5 L87 41.1 L90 39.4 L93 39.3 L96 39.7 L99 39.9 L102 40.6 L105 40.2 L108 39.6 L111 39.1 L114 39.5 L117 41.1 L120 39.3 L123 40.2 L126 40.4 L129 38.7 L132 40.0 L135 41.2 L138 38.2 L141 39.7 L144 39.9 L147 39.3 L150 40.4 L153 39.9 L156 38.7 L159 40.7 L162 40.6 L165 40.9 L168 41.3 L171 40.3 L174 40.1 L177 38.8 L180 40.6 L183 39.4 L186 39.6 L189 38.9 L192 39.1 L195 39.5 L198 41.2 L201 38.2 L204 38.7 L207 40.2 L210 41.3 L213 40.5 L216 38.3 L219 37.7 L222 40.3 L225 39.3 L228 39.0 L231 40.9 L234 41.0 L237 40.1 L240 40.2 L243 40.4 L246 41.4 L249 40.6 L252 40.5 L255 40.5 L258 38.6 L261 41.2 L264 40.9 L267 40.5 L270 38.2 L273 39.4 L276 40.8 L279 38.4 L282 39.8 L285 40.9 L288 38.8 L291 41.4 L294 40.5 L297 39.9 L300 40.3 L303 41.7 L306 39.9 L309 37.4 L312 41.8 L315 43.6 L318 36.2 L321 38.5 L324 42.5 L327 44.6 L330 33.3 L333 41.9 L336 42.4 L339 40.2 L342 32.9 L345 44.1 L348 45.1 L351 34.8 L354 38.5 L357 43.1 L360 42.3 L363 33.2 L366 43.1 L369 44.1 L372 41.0 L375 33.1 L378 44.9 L381 43.1 L384 36.9 L387 36.9 L390 45.3 L393 41.9 L396 34.8 L399 41.8 L402 45.1 L405 40.7 L408 33.2 L411 44.2 L414 41.8 L417 38.8 L420 35.9 L423 45.5 L426 42.4 L429 33.2 L432 39.4 L435 43.9 L438 40.2 L441 34.8 L444 43.6 L447 42.1 L450 38.7 L453 35.7 L456 47.4 L459 40.3 L462 36.3 L465 39.5 L468 43.8 L471 39.2 L474 33.3 L477 42.6 L480 42.6 L483 52.2 L486 55.0 L489 56.1 L492 43.5 L495 28.4 L498 7.6 L501 13.5 L504 36.7 L507 66.5 L510 74.3 L513 50.5 L516 33.7 L519 24.1 L522 26.6 L525 16.3 L528 30.6 L531 59.1 L534 75.2 L537 53.8 L540 30.7 L543 24.9 L546 28.2 L549 27.5 L552 32.6 L555 53.1 L558 66.7 L561 55.8 L564 36.2 L567 25.0 L570 22.3 L573 32.7 L576 40.5 L579 49.2 L582 51.7 L585 54.0 L588 45.4 L591 23.9 L594 18.9 L597 31.1 L600 48.6 L603 46.3 L606 49.5 L609 50.6 L612 47.3 L615 26.9 L618 22.7 L621 33.9 L624 44.0 L627 49.3 L630 48.6 L633 48.4 L636 39.6 L639 35.3 L642 27.6 L645 31.3 L648 39.0 L651 50.5 L654 52.3 L657 43.5 L660 38.2 L663 37.9 L666 35.8 L669 30.0 L672 36.2 L675 49.4 L678 52.9 L681 42.1 L684 38.5 L687 36.2 L690 34.1 L693 31.8 L696 36.2 L699 47.0 L702 49.1 L705 43.7 L708 38.6 L711 36.5 L714 33.4 L717 38.2 L720 39.7 L723 44.4 L726 45.5 L729 48.0 L732 40.4 L735 34.8 L738 31.0 L741 38.0 L744 40.3 L747 41.5 L750 42.3 L753 45.5 L756 42.1 L759 33.7 L762 34.1 L765 38.5 L768 43.2 L771 41.2 L774 44.3 L777 44.5 L780 40.1 L783 36.0 L786 35.5 L789 38.3 L792 37.7 L795 43.5 L798 44.6 L801 42.2 L804 38.7 L807 40.7 L810 37.5 L813 34.9 L816 37.6 L819 43.7 L822 44.6 L825 39.2 L828 38.9 L831 38.8 L834 36.8 L837 36.0 L840 39.2 L843 42.8 L846 40.7 L849 41.0 L852 39.8 L855 36.7 L858 38.1 L861 38.6 L864 38.2 L867 40.2 L870 41.6 L873 42.5 L876 40.7 L879 38.3 L882 38.0 L885 40.8 L888 41.2 L891 40.5 L894 42.0 L897 40.9 L900 40.9 L903 38.5 L906 38.5 L909 39.3 L912 41.8 L915 38.4 L918 42.6 L921 43.3 L924 39.1 L927 39.4 L930 40.9 L933 38.5 L936 40.2 L939 42.4 L942 40.5 L945 40.1 L948 39.9 L951 41.3 L954 38.5 L957 38.2 L960 38.9 L963 41.8 L966 41.4 L969 39.9 L972 39.5 L975 39.4 L978 41.1 L981 39.6 L984 41.2 L987 38.5 L990 41.3 L993 40.6 L996 42.2 L999 39.4"/>
+  </svg>
+  <span class="phase" style="left:30%">P</span>
+  <span class="phase" style="left:48%">S</span>
+</div>
 </div>
 
 <section id="news" data-section="news">
