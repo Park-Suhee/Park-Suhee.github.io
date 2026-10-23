@@ -10,57 +10,67 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#EDE8E3; --surface:#F5F2EE; --ink:#37322E; --muted:#6B635C;
-  --line:#D9D2CA; --accent:#4A6670;
+  --bg:#EDE8E3; --surface:#F7F4F0; --inset:#EFEBE6; --ink:#37322E; --muted:#6B635C;
+  --line:#DCD5CD; --accent:#3F5A63; --tint:rgba(63,90,99,.10);
+  --shadow:0 1px 2px rgba(60,50,45,.05),0 10px 30px rgba(60,50,45,.06);
   --serif:"Noto Serif KR","Iowan Old Style",Georgia,serif;
   --sans:"Noto Sans KR",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.75 var(--sans)}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;color:var(--ink);font:16px/1.8 var(--sans);background:var(--bg) radial-gradient(900px 420px at 85% -8%,#F8F5F1,transparent) no-repeat}
 html[lang="ko"] .en{display:none}
 html[lang="en"] .ko{display:none}
 a{color:var(--accent);text-underline-offset:3px}
-a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
-.wrap{max-width:760px;margin:0 auto;padding:0 24px}
-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px 0;font-size:15px}
-nav .links{display:flex;gap:18px;flex-wrap:wrap}
-nav a{color:var(--muted);text-decoration:none}
-nav a:hover{color:var(--ink)}
-.lang{font:inherit;font-size:14px;background:none;border:1px solid var(--line);color:var(--ink);padding:4px 14px;border-radius:999px;cursor:pointer;white-space:nowrap}
-.lang:hover{background:var(--surface)}
-.hero{display:grid;grid-template-columns:170px 1fr;gap:36px;align-items:center;padding:48px 0 28px}
-.photo{width:170px;height:170px;border-radius:50%;background:var(--line);overflow:hidden;display:grid;place-items:center;font:700 44px var(--serif);color:var(--muted)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;font-size:15px;background:rgba(237,232,227,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+nav .links{display:flex;gap:20px;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none;padding:2px 0;border-bottom:2px solid transparent}
+nav a:hover{color:var(--ink);border-bottom-color:var(--accent)}
+.lang{font:inherit;font-size:14px;background:var(--surface);border:1px solid var(--line);color:var(--ink);padding:5px 16px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:background .2s}
+.lang:hover{background:#fff}
+.hero-card{background:var(--surface);border-radius:28px;overflow:hidden;margin:8px 0 28px;box-shadow:var(--shadow)}
+.hero{display:grid;grid-template-columns:190px 1fr;gap:44px;align-items:center;padding:48px 44px 16px}
+.photo{width:190px;height:190px;border-radius:50%;background:var(--line);overflow:hidden;display:grid;place-items:center;font:700 48px var(--serif);color:var(--muted);box-shadow:0 0 0 6px var(--surface),0 0 0 7px var(--line)}
 .photo img{width:100%;height:100%;object-fit:cover;display:block}
-h1{font:700 clamp(34px,6vw,46px)/1.2 var(--serif);margin:0 0 6px;letter-spacing:-.01em}
+h1{font:700 clamp(38px,6.5vw,56px)/1.15 var(--serif);margin:0 0 8px;letter-spacing:-.02em}
 .role{margin:0;color:var(--muted)}
-.hero p.intro{margin:14px 0 0}
-.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:18px 0 0}
-.tags li{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:2px 13px;font-size:14px}
-.trace{display:block;width:100%;height:80px;margin:8px 0 0}
+.hero p.intro{margin:14px 0 0;max-width:60ch}
+.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:20px 0 0}
+.tags li{background:var(--tint);color:var(--accent);border-radius:999px;padding:3px 14px;font-size:14px;font-weight:500}
+.trace{display:block;width:100%;height:90px;margin:6px 0 0}
 .trace path{fill:none;stroke:var(--accent);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:2400;stroke-dashoffset:2400;animation:draw 2.6s ease-out .2s forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
 @media (prefers-reduced-motion:reduce){.trace path{animation:none;stroke-dashoffset:0}html{scroll-behavior:auto}}
-section{padding:36px 0;border-top:1px solid var(--line)}
-h2{font:700 24px/1.3 var(--serif);margin:0 0 16px}
+section{background:var(--surface);border-radius:22px;padding:34px 40px;margin:0 0 22px;box-shadow:var(--shadow)}
+h2{font:700 25px/1.3 var(--serif);margin:0 0 20px;display:flex;align-items:center;gap:12px}
+h2::before{content:"";width:6px;height:24px;border-radius:3px;background:var(--accent)}
 h3{font:500 17px/1.5 var(--sans);margin:0}
-.item{margin:0 0 22px}
+.item{margin:0 0 24px}
 .item:last-child{margin-bottom:0}
 .meta{margin:2px 0 0;color:var(--muted);font-size:15px}
 .item p{margin:6px 0 0}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
-.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-.btn{display:inline-block;padding:6px 16px;border:1px solid var(--accent);border-radius:999px;text-decoration:none;font-size:14px}
-.btn:hover{background:var(--accent);color:var(--surface)}
-dl{margin:0;display:grid;grid-template-columns:90px 1fr;gap:8px 16px}
+.card{background:var(--inset);border-radius:16px;padding:22px 24px}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.btn{display:inline-block;padding:7px 18px;border:1px solid var(--accent);border-radius:999px;text-decoration:none;font-size:14px;transition:background .2s,color .2s,transform .2s}
+.btn:first-child{background:var(--accent);color:#fff}
+.btn:hover{background:var(--accent);color:#fff;transform:translateY(-1px)}
+dl{margin:0;display:grid;grid-template-columns:96px 1fr;gap:10px 18px}
 dt{color:var(--muted)}
+#news-list dt{color:var(--accent);font-weight:500}
 dd{margin:0}
 .row{display:contents}
-footer{padding:28px 0 48px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
-@media (max-width:620px){
-  .hero{grid-template-columns:1fr;gap:22px;padding-top:28px}
-  .photo{width:132px;height:132px}
+#education .item{position:relative;margin:0 0 0 6px;padding:0 0 26px 28px;border-left:2px solid var(--line)}
+#education .item:last-child{padding-bottom:0}
+#education .item::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--surface)}
+footer{padding:12px 0 48px;color:var(--muted);font-size:14px;text-align:center}
+@media (max-width:700px){
+  nav{position:static;background:none;backdrop-filter:none}
+  .hero{grid-template-columns:1fr;gap:24px;padding:32px 24px 8px}
+  .photo{width:140px;height:140px}
+  section{padding:26px 22px;border-radius:18px}
   dl{grid-template-columns:1fr;gap:2px 0}
   dt{margin-top:8px}
 }
@@ -76,17 +86,17 @@ var SITE = {
      (소식·발표·TA는 아래 목록이 비어 있으면 자동으로 숨겨집니다) */
   show: {
     cv: false,        // CV 파일(Suhee_Park_CV.pdf)을 올린 뒤 true 로 바꾸세요
-    comments: false   // 댓글창. 아래 giscus 값을 채운 뒤 true 로 바꾸세요
+    comments: false   // 댓글창. 위 Cusdis(또는 giscus) 값을 채운 뒤 true 로 바꾸세요
   },
 
-  /* 댓글(giscus) 설정: https://giscus.app/ko 에서 저장소를 입력하면 값 4개를 알려 줍니다 */
-  show: { cv: false, comments: true },
-  giscus: {
-    repo: "Park-Suhee/Park-Suhee.github.io",
-    repoId: "R_kgDOVVKL4w",
-    category: "Announcements",
-    categoryId: "DIC_kwDOVVKL484DJcuw"
-  },
+  /* 댓글 방법 1 (추천, 친구들이 로그인 없이 작성): Cusdis
+     cusdis.com 가입 → Add website → 나오는 App ID를 아래에 붙여 넣으세요 */
+  cusdis: { appId: "" },
+
+  /* 댓글 방법 2 (GitHub 로그인 필요): giscus
+     https://giscus.app/ko 에서 저장소를 입력하면 값 4개를 알려 줍니다
+     (Cusdis App ID가 있으면 Cusdis가 우선 사용됩니다) */
+  giscus: { repo: "", repoId: "", category: "", categoryId: "" },
 
   /* 연구 관심사 키워드 */
   keywords: [
@@ -101,7 +111,7 @@ var SITE = {
   /* 소식 — 새 소식은 맨 위에 추가하세요 */
   news: [
     { date: "2026",
-      ko: "첫번째 논문이 Seismological Research Letters (SRL)에 게재되었습니다.",
+      ko: "첫 번째 논문이 Seismological Research Letters에 게재되었습니다.",
       en: "My first paper was published in Seismological Research Letters." }
     /* 추가 예시:
     , { date: "2026.11", ko: "한글 소식", en: "English news" } */
@@ -109,15 +119,11 @@ var SITE = {
 
   /* 학회 발표 — 아래 형식으로 추가하세요. 비어 있으면 섹션이 숨겨집니다 */
   talks: [
-    { year: "2023",
-      title: "Characteristics of microseismicity in the Kiskatinaw area, northeastern British Columbia, Canada",
-      venue: "EGU, Austria", type: "Poster" }
     /* { year: "2026", title: "발표 제목", venue: "학회 이름, 장소", type: "Poster" } */
   ],
 
   /* 조교(TA) 이력 — 아래 형식으로 추가하세요. 비어 있으면 섹션이 숨겨집니다 */
   teaching: [
-    { term: "2026 Fall", course: "Earthqukes and Volcanoes", role: "Shadow Teaching Assistant", where: "Southern Methodist University" }
     /* { term: "2026 Fall", course: "과목명", role: "Teaching Assistant", where: "Southern Methodist University" } */
   ]
 };
@@ -141,6 +147,7 @@ var SITE = {
   </button>
 </nav>
 
+<div class="hero-card">
 <header class="hero">
   <div class="photo">
     <!-- 프로필 사진을 images/profile.jpg 로 저장하면 자동으로 표시됩니다 -->
@@ -162,6 +169,7 @@ var SITE = {
 <svg class="trace" viewBox="0 0 1000 80" preserveAspectRatio="none" aria-hidden="true">
   <path d="M0 40 L40 41 L70 39 L100 41 L140 40 L180 39 L220 41 L260 40 L300 38 L330 44 L350 20 L365 62 L380 8 L395 70 L410 16 L425 58 L440 26 L455 52 L470 30 L490 48 L510 34 L540 46 L570 36 L610 44 L650 38 L700 42 L760 39 L820 41 L900 40 L1000 40"/>
 </svg>
+</div>
 
 <section id="news" data-section="news">
   <h2><span class="ko">소식</span><span class="en">News</span></h2>
@@ -213,7 +221,7 @@ var SITE = {
   <div class="item">
     <h3 class="ko">석사</h3>
     <h3 class="en">M.S.</h3>
-    <p class="meta ko">지구환경시스템과학과, 국립부경대학교, 부산, 대한민국</p>
+    <p class="meta ko">지구환경시스템과학과, 국립공주대학교, 공주, 대한민국</p>
     <p class="meta en">Earth Environmental System Sciences, Kongju National University, Gongju, South Korea</p>
     <p class="ko">논문: Characterization of microseismic sources in the Kiskatinaw area, British Columbia, Canada</p>
     <p class="en">Thesis: Characterization of microseismic sources in the Kiskatinaw area, British Columbia, Canada</p>
@@ -240,9 +248,8 @@ var SITE = {
 
 <section id="comments" data-section="comments">
   <h2><span class="ko">댓글</span><span class="en">Comments</span></h2>
-  <p class="meta ko">GitHub 계정으로 로그인하면 댓글을 남길 수 있어요.</p>
-  <p class="meta en">Sign in with GitHub to leave a comment.</p>
-  <div id="giscus-box"></div>
+  <p class="meta" id="cm-note"></p>
+  <div id="comment-box"></div>
 </section>
 
 <section id="contact">
@@ -302,26 +309,40 @@ var SITE = {
   });
 
   /* ---------- 섹션 켜기/끄기 ---------- */
-  var g=SITE.giscus,giscusReady=!!(g.repo&&g.repoId&&g.category&&g.categoryId);
+  var g=SITE.giscus,giscusReady=!!(g.repo&&g.repoId&&g.category&&g.categoryId),cusdisReady=!!(SITE.cusdis&&SITE.cusdis.appId),commentsReady=giscusReady||cusdisReady;
   var visible={
     news:SITE.news.length>0, research:true, publications:true, education:true,
     talks:SITE.talks.length>0, teaching:SITE.teaching.length>0,
-    comments:SITE.show.comments&&giscusReady, cv:SITE.show.cv
+    comments:SITE.show.comments&&commentsReady, cv:SITE.show.cv
   };
   Array.prototype.forEach.call(document.querySelectorAll('[data-section]'),function(n){
     if(!visible[n.getAttribute('data-section')])n.hidden=true;
   });
 
-  /* ---------- 댓글(giscus) ---------- */
+  /* ---------- 댓글 ---------- */
   if(visible.comments){
-    var s=document.createElement('script');
-    s.src='https://giscus.app/client.js';s.async=true;s.crossOrigin='anonymous';
-    s.setAttribute('data-repo',g.repo);s.setAttribute('data-repo-id',g.repoId);
-    s.setAttribute('data-category',g.category);s.setAttribute('data-category-id',g.categoryId);
-    s.setAttribute('data-mapping','pathname');s.setAttribute('data-reactions-enabled','1');
-    s.setAttribute('data-input-position','top');s.setAttribute('data-theme','light');
-    s.setAttribute('data-lang',root.lang==='ko'?'ko':'en');
-    document.getElementById('giscus-box').appendChild(s);
+    var box=document.getElementById('comment-box'),note=document.getElementById('cm-note');
+    if(cusdisReady){
+      note.appendChild(el('span','ko','이름과 메시지를 남겨 주세요. 확인 후 게시돼요.'));
+      note.appendChild(el('span','en','Leave your name and a message. Comments appear after approval.'));
+      var d=el('div');d.id='cusdis_thread';
+      d.setAttribute('data-host','https://cusdis.com');d.setAttribute('data-app-id',SITE.cusdis.appId);
+      d.setAttribute('data-page-id','home');d.setAttribute('data-page-url',location.href.split('#')[0]);
+      d.setAttribute('data-page-title',document.title);d.setAttribute('data-theme','light');
+      box.appendChild(d);
+      var cs=document.createElement('script');cs.async=true;cs.defer=true;cs.src='https://cusdis.com/js/cusdis.es.js';box.appendChild(cs);
+    }else{
+      note.appendChild(el('span','ko','GitHub 계정으로 로그인하면 댓글을 남길 수 있어요.'));
+      note.appendChild(el('span','en','Sign in with GitHub to leave a comment.'));
+      var s=document.createElement('script');
+      s.src='https://giscus.app/client.js';s.async=true;s.crossOrigin='anonymous';
+      s.setAttribute('data-repo',g.repo);s.setAttribute('data-repo-id',g.repoId);
+      s.setAttribute('data-category',g.category);s.setAttribute('data-category-id',g.categoryId);
+      s.setAttribute('data-mapping','pathname');s.setAttribute('data-reactions-enabled','1');
+      s.setAttribute('data-input-position','top');s.setAttribute('data-theme','light');
+      s.setAttribute('data-lang',root.lang==='ko'?'ko':'en');
+      box.appendChild(s);
+    }
   }
 
   document.getElementById('yr').textContent=new Date().getFullYear();
