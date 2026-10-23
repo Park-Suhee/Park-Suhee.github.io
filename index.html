@@ -132,7 +132,7 @@ var SITE = {
     { ko: "Google Scholar", en: "Google Scholar", url: "https://scholar.google.com/citations?user=2pWikIQAAAAJ&hl=en" },
     { ko: "ORCID", en: "ORCID", url: "https://orcid.org/0000-0001-5731-8464" },
     { ko: "LinkedIn", en: "LinkedIn", url: "https://www.linkedin.com/in/suhee" },
-    { ko: "Zenodo", en: "Zenodo", url: "https://zenodo.org/records/17865685 }
+    { ko: "Zenodo", en: "Zenodo", url: "https://zenodo.org/records/17865685" }
   ],
 
   /* 연구 그림 — 연구 섹션 아래에 나란히 표시됩니다. 그림 파일은 images 폴더에 올리세요.
@@ -375,7 +375,7 @@ var SITE = {
       a.appendChild(im);fg.appendChild(a);
       var c=el('figcaption');
       c.appendChild(el('span','ko',f.ko || f.en || ''));
-      c.appendChild(el('span','en',f.en || f.ko || ''));;
+      c.appendChild(el('span','en',f.en || f.ko || ''));
       fg.appendChild(c);target.appendChild(fg);
     });
   }
