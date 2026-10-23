@@ -139,7 +139,9 @@ var SITE = {
 
   /* 연구 그림 — 연구 섹션 아래에 나란히 표시됩니다. 그림 파일은 images 폴더에 올리세요.
      비어 있으면 아무것도 보이지 않습니다 */
-  figures: [
+  figures: [{ src: "Figure/Figur1.png", ko: "그림 설명", en: "Figure caption" }
+            { src: "Figure/Figure3.png", ko: "그림 설명", en: "Figure caption" }
+            { src: "Figure/Figure5.png", ko: "그림 설명", en: "Figure caption" }
     /* { src: "images/fig-yeongdeok-map.png", ko: "그림 설명", en: "Figure caption" } */
   ],
 
@@ -163,12 +165,14 @@ var SITE = {
   ],
 
   /* 학회 발표 — 아래 형식으로 추가하세요. 비어 있으면 섹션이 숨겨집니다 */
-  talks: [
+  talks: [{ year: "2023",
+           title: "Characteristics of microseismicity in the Kiskatinaw area, northeastern British Columbia, Canada",
+           venue: "EGU, Austria", type: "Poster" }
     /* { year: "2026", title: "발표 제목", venue: "학회 이름, 장소", type: "Poster" } */
   ],
 
   /* 조교(TA) 이력 — 아래 형식으로 추가하세요. 비어 있으면 섹션이 숨겨집니다 */
-  teaching: [
+  teaching: [{ term: "2026 Fall", course: "Earthquakes and Volcanoes", role: "Shadow Teaching Assistant", where: "Southern Methodist University" }
     /* { term: "2026 Fall", course: "과목명", role: "Teaching Assistant", where: "Southern Methodist University" } */
   ]
 };
