@@ -118,7 +118,9 @@ var SITE = {
      role: "coauthor" 로 쓰면 '공저' 표시가 붙고, presenter 에 발표자 이름을 적을 수 있어요 (생략하면 직접 발표) */
   talks: [
     { year: "2023", type: "Poster", venue: "EGU, Austria",
-      title: "Characteristics of microseismicity in the Kiskatinaw area, northeastern British Columbia, Canada" }
+      title: "Characteristics of microseismicity in the Kiskatinaw area, northeastern British Columbia, Canada" },
+     { year: "2026", type: "Poster", venue: "2026 Joint Fall Meeting of Korean Geological Societies, South Korea",
+      title: "Construction of a 3D seismic velocity model for the Buan area, Korea, using ray-traveltime forward modeling", role: "coauthor", presenter: "Minog Kim" }
     /* 공저 발표 예시:
     , { year: "2024", type: "Oral", venue: "학회 이름, 장소", title: "발표 제목", role: "coauthor", presenter: "발표자 이름" } */
   ],
