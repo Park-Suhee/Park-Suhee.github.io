@@ -142,8 +142,8 @@ var SITE = {
              en: "Borehole seismometer installation at the Pohang geothermal power plant" },
     date: "2026.10",
     photos: [
-      { src: "images/photos/Pohang/Pohang1.jpeg", ko: "지진계 설치", en: "Installing a seismometer" },
-      { src: "images/photos/Pohang/Pohang2.jpeg", ko: "지진계 설치", en: "Installing a seismometer in the borehole" }
+      { src: "images/Pohang/Pohang1.jpeg", ko: "지진계 설치", en: "Installing a seismometer in the borehole" },
+      { src: "images/Pohang/Pohang2.jpeg", ko: "지진계 설치", en: "Installing a seismometer in the borehole" }
     ] }
    ],
 };
