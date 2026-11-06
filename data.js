@@ -137,12 +137,13 @@ var SITE = {
      사진 탭에 앨범 카드로 나열되고, 누르면 앨범 페이지가 열려요. 비어 있으면 사진 탭이 숨겨져요.
      type: "field"(현장) / "conference"(학회) / 그 외 자유롭게. cover 를 생략하면 첫 사진이 표지가 돼요. */
   albums: [
-  { id: "field-2026-yeongdeok", type: "field",
-    title: { ko: "영덕 현장 조사", en: "Yeongdeok field survey" },
+  { id: "Pohang", type: "field",
+    title: { ko: "포항 지열발전소 시추공 지진계 설치",
+             en: "Borehole seismometer installation at the Pohang geothermal power plant" },
     date: "2026.10",
     photos: [
-               { src: "images/photos/field-2026-yeongdeok/01.jpg", ko: "지진계 설치", en: "Installing a seismometer" },
-               { src: "images/photos/field-2026-yeongdeok/02.jpg", ko: "관측소 점검", en: "Checking the station" }
-             ] }
-         ],
+      { src: "images/photos/Pohang/Pohang1.jpg", ko: "지진계 설치", en: "Installing a seismometer" },
+      { src: "images/photos/Pohang/Pohang2.jpg", ko: "지진계 설치", en: "Installing a seismometer in the borehole" }
+    ] }
+   ],
 };
