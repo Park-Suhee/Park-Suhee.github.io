@@ -137,13 +137,12 @@ var SITE = {
      사진 탭에 앨범 카드로 나열되고, 누르면 앨범 페이지가 열려요. 비어 있으면 사진 탭이 숨겨져요.
      type: "field"(현장) / "conference"(학회) / 그 외 자유롭게. cover 를 생략하면 첫 사진이 표지가 돼요. */
   albums: [
-    /* { id: "field-2026", type: "field",
-         title: { ko: "앨범 제목", en: "Album title" },
-         date: "2026.10",
-         cover: "images/photos/field-2026/01.jpg",
-         photos: [
-           { src: "images/photos/field-2026/01.jpg", ko: "사진 설명", en: "Photo caption" },
-           { src: "images/photos/field-2026/02.jpg", ko: "사진 설명", en: "Photo caption" }
-         ] } */
-  ]
+  { id: "field-2026-yeongdeok", type: "field",
+    title: { ko: "영덕 현장 조사", en: "Yeongdeok field survey" },
+    date: "2026.10",
+    photos: [
+               { src: "images/photos/field-2026-yeongdeok/01.jpg", ko: "지진계 설치", en: "Installing a seismometer" },
+               { src: "images/photos/field-2026-yeongdeok/02.jpg", ko: "관측소 점검", en: "Checking the station" }
+             ] }
+         ],
 };
