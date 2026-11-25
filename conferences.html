@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conferences &amp; Deadlines | Suhee Park</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #fcf8f2;
+      --surface: #ffffff;
+      --surface-muted: #f5efe6;
+      --border: #e6dfd3;
+      --border-strong: #d4c9b8;
+      --text: #1f2421;
+      --text-secondary: #57534e;
+      --text-muted: #8a8175;
+      --accent: #2c4a3e;       /* 딥 포레스트 그린 */
+      --accent-soft: #e8efe9;
+      --warn: #b45309;         /* 앰버 (여비 마감 강조) */
+      --warn-soft: #fef3c7;
+      --urgent: #b91c1c;
+      --urgent-soft: #fee2e2;
+      --oral: #1d4ed8;
+      --oral-soft: #dbeafe;
+      --poster: #047857;
+      --poster-soft: #d1fae5;
+      --radius: 12px;
+      --shadow: 0 2px 10px rgba(31, 36, 33, 0.04);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 28px 20px 80px;
+    }
+
+    /* 상단 네비게이션 & 헤더 */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .top-nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .top-nav a:hover { color: var(--accent); }
+
+    .nav-links { display: flex; gap: 18px; }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-top: 4px;
+    }
+
+    /* 듀얼 시계 위젯 (Texas + UTC) */
+    .clock-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      display: flex;
+      gap: 20px;
+      box-shadow: var(--shadow);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+    }
+
+    .clock-item span.label {
+      display: block;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .clock-item strong {
+      font-size: 0.92rem;
+      color: var(--accent);
+    }
+
+    /* 메인 탭 바 */
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+
+    .tab-btn:hover {
+      background: var(--surface-muted);
+      color: var(--text);
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .tab-badge {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 1px 7px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .tab-btn:not(.active) .tab-badge {
+      background: var(--surface-muted);
+      color: var(--text-secondary);
+    }
+
+    /* 서브 필터 & 유틸리티 바 */
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .chip.active, .chip:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .action-btn {
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      color: var(--text);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .action-btn:hover { background: var(--surface-muted); }
+
+    /* 학회 카드 그리드 (Upcoming) */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 18px;
+    }
+
+    .conf-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+
+    .conf-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-2px);
+    }
+
+    .conf-card.starred {
+      border: 1.5px solid var(--accent);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .conf-title-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .conf-short {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .dday-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .dday-badge.urgent {
+      background: var(--urgent-soft);
+      color: var(--urgent);
+    }
+    .dday-badge.past {
+      background: var(--surface-muted);
+      color: var(--text-muted);
+    }
+
+    .star-btn {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #cbd5e1;
+      line-height: 1;
+    }
+    .star-btn.active { color: #eab308; }
+
+    .conf-full {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .meta-line {
+      font-size: 0.84rem;
+      color: var(--text);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .deadline-box {
+      background: var(--surface-muted);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin: 12px 0;
+      font-size: 0.82rem;
+    }
+
+    .deadline-box .dl-title {
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .time-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text);
+      display: block;
+    }
+
+    .grant-box {
+      background: var(--warn-soft);
+      border-left: 3px solid var(--warn);
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      margin-bottom: 12px;
+      color: #78350f;
+    }
+
+    .detail-list {
+      font-size: 0.81rem;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+      margin-top: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .note-area {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .note-input {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 9px;
+      font-size: 0.8rem;
+      font-family: inherit;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .note-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: #fff;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+    }
+
+    .card-footer a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .card-footer a:hover { text-decoration: underline; }
+
+    /* 비교 테이블 뷰 */
+    .table-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow-x: auto;
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+      text-align: left;
+    }
+
+    th {
+      background: var(--surface-muted);
+      padding: 12px 14px;
+      font-weight: 600;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    /* 과거 학회 아카이브 리스트 */
+    .archive-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .archive-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .archive-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .archive-conf {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--accent);
+    }
+
+    .type-pill {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 2px 9px;
+      border-radius: 999px;
+    }
+    .type-pill.Oral { background: var(--oral-soft); color: var(--oral); }
+    .type-pill.Poster { background: var(--poster-soft); color: var(--poster); }
+    .type-pill.Invited { background: var(--warn-soft); color: var(--warn); }
+
+    .archive-title {
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .archive-authors {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .archive-meta {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .archive-links {
+      margin-top: 10px;
+      display: flex;
+      gap: 12px;
+      font-size: 0.82rem;
+    }
+
+    .archive-links a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .hidden { display: none !important; }
+
+    /* CV 복사용 모달 */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 100;
+    }
+
+    .modal {
+      background: var(--surface);
+      border-radius: var(--radius);
+      max-width: 680px;
+      width: 100%;
+      padding: 22px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .modal textarea {
+      width: 100%;
+      height: 220px;
+      margin: 12px 0;
+      padding: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg);
+    }
+
+    @media (max-width: 640px) {
+      .clock-box { width: 100%; justify-content: space-between; }
+      .cards-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 기존 포트폴리오 사이트로 돌아가는 상단 네비게이션 -->
+    <nav class="top-nav">
+      <a href="index.html">← Suhee Park</a>
+      <div class="nav-links">
+        <a href="research.html">Research</a>
+        <a href="publications.html">Publications</a>
+        <a href="cv.html">CV</a>
+      </div>
+    </nav>
+
+    <header>
+      <div>
+        <h1>Seismology Conferences &amp; Archive</h1>
+        <p class="subtitle">학회 초록 마감 트래커 (Texas CST/CDT &amp; UTC) 및 학술발표 아카이브</p>
+      </div>
+      <div class="clock-box">
+        <div class="clock-item">
+          <span class="label">Texas (Dallas)</span>
+          <strong id="clock-texas">--:--:--</strong>
+        </div>
+        <div class="clock-item">
+          <span class="label">UTC (Universal)</span>
+          <strong id="clock-utc">--:--:--</strong>
+        </div>
+      </div>
+    </header>
+
+    <!-- 메인 탭 전환 -->
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="upcoming">
+        예정된 학회 (2027+) <span class="tab-badge" id="count-upcoming">0</span>
+      </button>
+      <button class="tab-btn" data-tab="table">
+        마감일 한눈에 비교표
+      </button>
+      <button class="tab-btn" data-tab="past">
+        다녀온 학회 아카이브 <span class="tab-badge" id="count-past">0</span>
+      </button>
+    </div>
+
+    <!-- TAB 1: 예정된 학회 카드 뷰 -->
+    <section id="view-upcoming">
+      <div class="toolbar">
+        <div class="filter-group" id="upcoming-filters">
+          <button class="chip active" data-filter="all">전체 보기</button>
+          <button class="chip" data-filter="starred">★ 타겟 학회만</button>
+          <button class="chip" data-filter="usa">미국 내 개최</button>
+          <button class="chip" data-filter="intl">해외 개최</button>
+        </div>
+        <span style="font-size: 0.78rem; color: var(--text-muted);">
+          * ★ 표시 및 메모는 현재 브라우저에 자동 저장됩니다
+        </span>
+      </div>
+      <div class="cards-grid" id="upcoming-grid"></div>
+    </section>
+
+    <!-- TAB 2: 비교 테이블 뷰 -->
+    <section id="view-table" class="hidden">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>학회</th>
+              <th>개최지 &amp; 일정</th>
+              <th>초록 마감 (Texas)</th>
+              <th>초록 마감 (UTC)</th>
+              <th>학생 여비 마감</th>
+              <th>1저자 제한 &amp; 연계 저널</th>
+            </tr>
+          </thead>
+          <tbody id="comparison-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB 3: 다녀온 학회 아카이브 -->
+    <section id="view-past" class="hidden">
+      <div class="toolbar">
+        <div class="filter-group" id="past-filters">
+          <button class="chip active" data-type="all">전체 발표</button>
+          <button class="chip" data-type="Oral">Oral (구두)</button>
+          <button class="chip" data-type="Poster">Poster (포스터)</button>
+        </div>
+        <button class="action-btn" id="btn-export-cv">📋 CV용 텍스트 복사</button>
+      </div>
+      <div class="archive-list" id="past-list"></div>
+    </section>
+  </div>
+
+  <!-- CV 텍스트 복사 모달 -->
+  <div class="modal-backdrop hidden" id="cv-modal">
+    <div class="modal">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <strong>CV / Publications 복사용 발표 목록</strong>
+        <button class="action-btn" id="btn-close-modal">닫기</button>
+      </div>
+      <textarea id="cv-output" readonly></textarea>
+      <div style="display:flex; justify-content:flex-end; gap:8px;">
+        <button class="tab-btn active" id="btn-copy-cv">클립보드에 복사</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 데이터 파일 로드 -->
+  <script src="conference-data.js"></script>
+  <script>
+    // 1. 실시간 듀얼 시계 (Texas America/Chicago & UTC)
+    function updateClocks() {
+      const now = new Date();
+      const txFmt = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/Chicago',
+        month: 'short', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', second: '2-digit',
+        hour12: false, timeZoneName: 'short'
+      });
+      const utcFmt = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'UTC',
+        month: 'short', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', second: '2-digit',
+        hour12: false
+      });
+      document.getElementById('clock-texas').textContent = txFmt.format(now);
+      document.getElementById('clock-utc').textContent = utcFmt.format(now) + ' UTC';
+    }
+    setInterval(updateClocks, 1000);
+    updateClocks();
+
+    // 2. 로컬 스토리지 상태 (타겟 즐겨찾기 및 메모)
+    const STORAGE_KEY = 'suhee_conf_tracker_v1';
+    let userState = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{"starred":{},"notes":{}}');
+
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(userState));
+    }
+
+    function calcDday(isoUTC) {
+      const target = new Date(isoUTC).getTime();
+      const now = Date.now();
+      const diffDays = Math.ceil((target - now) / (1000 * 60 * 60 * 24));
+      if (diffDays < 0) return { label: '마감됨', cls: 'past' };
+      if (diffDays === 0) return { label: 'D-DAY', cls: 'urgent' };
+      if (diffDays <= 21) return { label: `D-${diffDays}`, cls: 'urgent' };
+      return { label: `D-${diffDays}`, cls: '' };
+    }
+
+    // 3. 예정 학회 렌더링
+    const upcomingData = (typeof CONFERENCE_DATA !== 'undefined' ? CONFERENCE_DATA.upcoming : [])
+      .slice()
+      .sort((a, b) => new Date(a.abstractDeadline.isoUTC) - new Date(b.abstractDeadline.isoUTC));
+
+    const pastData = (typeof CONFERENCE_DATA !== 'undefined' ? CONFERENCE_DATA.past : [])
+      .slice()
+      .sort((a, b) => b.year - a.year);
+
+    document.getElementById('count-upcoming').textContent = upcomingData.length;
+    document.getElementById('count-past').textContent = pastData.length;
+
+    let currentUpcomingFilter = 'all';
+
+    function renderUpcoming() {
+      const grid = document.getElementById('upcoming-grid');
+      grid.innerHTML = '';
+
+      const filtered = upcomingData.filter(item => {
+        if (currentUpcomingFilter === 'starred') return !!userState.starred[item.id];
+        if (currentUpcomingFilter === 'usa') return item.flag === '🇺🇸';
+        if (currentUpcomingFilter === 'intl') return item.flag !== '🇺🇸';
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<p style="color:var(--text-muted); padding:20px 0;">해당 조건의 학회가 없습니다.</p>';
+        return;
+      }
+
+      filtered.forEach(conf => {
+        const isStarred = !!userState.starred[conf.id];
+        const dday = calcDday(conf.abstractDeadline.isoUTC);
+        const savedNote = userState.notes[conf.id] || '';
+
+        const card = document.createElement('article');
+        card.className = `conf-card ${isStarred ? 'starred' : ''}`;
+        card.innerHTML = `
+          <div>
+            <div class="card-top">
+              <div class="conf-title-row">
+                <span style="font-size:1.3rem;">${conf.flag}</span>
+                <span class="conf-short">${conf.shortName}</span>
+                <span class="dday-badge ${dday.cls}">${dday.label}</span>
+              </div>
+              <button class="star-btn ${isStarred ? 'active' : ''}" title="타겟 학회 즐겨찾기" data-id="${conf.id}">★</button>
+            </div>
+            <div class="conf-full">${conf.fullName}</div>
+            <div class="meta-line">📍 <strong>${conf.location}</strong></div>
+            <div class="meta-line">🗓️ ${conf.conferenceDates}</div>
+
+            <div class="deadline-box">
+              <div class="dl-title">
+                <span>초록 마감 (Abstract Deadline)</span>
+              </div>
+              <span class="time-mono">🇺🇸 TX: ${conf.abstractDeadline.texasTime}</span>
+              <span class="time-mono">🌐 UTC: ${conf.abstractDeadline.utcTime}</span>
+            </div>
+
+            <div class="grant-box">
+              <strong>💰 학생 여비 마감:</strong> ${conf.travelGrantDeadline.texasTime}<br/>
+              <span>${conf.travelGrantDeadline.note}</span>
+            </div>
+
+            <div class="detail-list">
+              <div><strong>분과:</strong> ${conf.division}</div>
+              <div><strong>제출 규정:</strong> ${conf.submissionLimit}</div>
+              <div><strong>결과 통보:</strong> ${conf.notificationDate}</div>
+              <div><strong>연계 저널:</strong> ${conf.relatedJournals.join(', ')}</div>
+              <div><strong>출장 팁:</strong> ${conf.texasTravelTip}</div>
+            </div>
+          </div>
+
+          <div>
+            <div class="note-area">
+              <input type="text" class="note-input" data-note-id="${conf.id}"
+                placeholder="✎ 가제(Working Title) 또는 제출 메모 입력..."
+                value="${savedNote.replace(/"/g, '&quot;')}" />
+            </div>
+            <div class="card-footer">
+              <span style="color:var(--text-muted);">${conf.tags.map(t => '#' + t).join(' ')}</span>
+              <a href="${conf.url}" target="_blank" rel="noopener">공식 홈페이지 ↗</a>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      // 이벤트 바인딩
+      grid.querySelectorAll('.star-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.dataset.id;
+          userState.starred[id] = !userState.starred[id];
+          saveState();
+          renderUpcoming();
+        });
+      });
+
+      grid.querySelectorAll('.note-input').forEach(input => {
+        input.addEventListener('input', () => {
+          userState.notes[input.dataset.noteId] = input.value;
+          saveState();
+        });
+      });
+    }
+
+    // 4. 비교 테이블 렌더링
+    function renderTable() {
+      const tbody = document.getElementById('comparison-tbody');
+      tbody.innerHTML = upcomingData.map(c => `
+        <tr>
+          <td><strong>${c.flag} ${c.shortName}</strong><br/><span style="font-size:0.78rem; color:var(--text-muted);">${c.notificationDate} 통보</span></td>
+          <td>${c.location}<br/><strong>${c.conferenceDates}</strong></td>
+          <td style="font-family:'JetBrains Mono', monospace; font-size:0.79rem;">${c.abstractDeadline.texasTime}</td>
+          <td style="font-family:'JetBrains Mono', monospace; font-size:0.79rem;">${c.abstractDeadline.utcTime}</td>
+          <td style="font-size:0.8rem;"><strong>${c.travelGrantDeadline.date}</strong><br/><span style="color:var(--text-secondary);">${c.travelGrantDeadline.note}</span></td>
+          <td style="font-size:0.8rem;">${c.submissionLimit}<br/><span style="color:var(--accent);">${c.relatedJournals.join(', ')}</span></td>
+        </tr>
+      `).join('');
+    }
+
+    // 5. 다녀온 학회 아카이브 렌더링
+    let currentPastType = 'all';
+
+    function renderPast() {
+      const list = document.getElementById('past-list');
+      const filtered = pastData.filter(p => currentPastType === 'all' || p.presentationType === currentPastType);
+
+      if (filtered.length === 0) {
+        list.innerHTML = '<p style="color:var(--text-muted);">등록된 발표 기록이 없습니다.</p>';
+        return;
+      }
+
+      list.innerHTML = filtered.map(p => `
+        <article class="archive-item">
+          <div class="archive-header">
+            <span class="archive-conf">${p.flag} ${p.conference} · ${p.location} (${p.dates})</span>
+            <span class="type-pill ${p.presentationType}">${p.presentationType}</span>
+          </div>
+          <div class="archive-title">${p.title}</div>
+          <div class="archive-authors">${p.authors}</div>
+          <div class="archive-meta">
+            <span><strong>Session:</strong> ${p.session}</span>
+            ${p.notes ? `<span>· ${p.notes}</span>` : ''}
+          </div>
+          ${(p.abstractUrl || p.fileUrl) ? `
+            <div class="archive-links">
+              ${p.abstractUrl ? `<a href="${p.abstractUrl}" target="_blank">Abstract Link ↗</a>` : ''}
+              ${p.fileUrl ? `<a href="${p.fileUrl}" target="_blank">Poster / Slides PDF ↗</a>` : ''}
+            </div>
+          ` : ''}
+        </article>
+      `).join('');
+    }
+
+    // 탭 & 필터 이벤트
+    document.querySelectorAll('.tab-btn[data-tab]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn[data-tab]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const tab = btn.dataset.tab;
+        document.getElementById('view-upcoming').classList.toggle('hidden', tab !== 'upcoming');
+        document.getElementById('view-table').classList.toggle('hidden', tab !== 'table');
+        document.getElementById('view-past').classList.toggle('hidden', tab !== 'past');
+      });
+    });
+
+    document.querySelectorAll('#upcoming-filters .chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('#upcoming-filters .chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        currentUpcomingFilter = chip.dataset.filter;
+        renderUpcoming();
+      });
+    });
+
+    document.querySelectorAll('#past-filters .chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('#past-filters .chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        currentPastType = chip.dataset.type;
+        renderPast();
+      });
+    });
+
+    // CV 복사용 모달
+    const cvModal = document.getElementById('cv-modal');
+    document.getElementById('btn-export-cv').addEventListener('click', () => {
+      const lines = pastData.map(p =>
+        `• ${p.authors} (${p.year}). "${p.title}." ${p.conference}, ${p.location}, ${p.dates} [${p.presentationType}].`
+      );
+      document.getElementById('cv-output').value = lines.join('\n\n');
+      cvModal.classList.remove('hidden');
+    });
+
+    document.getElementById('btn-close-modal').addEventListener('click', () => {
+      cvModal.classList.add('hidden');
+    });
+
+    document.getElementById('btn-copy-cv').addEventListener('click', () => {
+      const textarea = document.getElementById('cv-output');
+      textarea.select();
+      navigator.clipboard.writeText(textarea.value);
+      document.getElementById('btn-copy-cv').textContent = '복사 완료!';
+      setTimeout(() => {
+        document.getElementById('btn-copy-cv').textContent = '클립보드에 복사';
+      }, 1500);
+    });
+
+    // 초기 렌더링
+    renderUpcoming();
+    renderTable();
+    renderPast();
+  </script>
+</body>
+</html>
