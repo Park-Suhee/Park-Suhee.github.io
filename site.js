@@ -41,6 +41,7 @@ function nav(){
   [['index.html','home',{ko:'홈',en:'Home'},1],
    ['research.html','research',{ko:'연구',en:'Research'},S.projects.length],
    ['publications.html','publications',{ko:'논문',en:'Publications'},S.publications.length],
+   ['conferences.html','conferences',{ko:'학회',en:'Conferences'},1],
    ['cv.html','cv',{ko:'학력·이력',en:'CV'},1],
    ['photos.html','photos',{ko:'사진',en:'Photos'},S.albums.length]
   ].forEach(function(t){
